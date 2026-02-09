@@ -1,0 +1,17 @@
+[Unit]
+Description=Discord Lab Bot
+After=network.target docker.service
+Requires=docker.service
+
+[Service]
+Type=simple
+User=root
+# Ensure this path matches where you clone the repo
+WorkingDirectory=/root/discord-container
+# Ensure this path matches your venv
+ExecStart=/root/discord-container/venv/bin/python3 /root/discord-container/bot.py
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
